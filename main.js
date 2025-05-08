@@ -112,13 +112,59 @@ function addOnlyNums(...argumentos) {
 
 console.log(addOnlyNums(1, "perro", 2, 4)); //7
 
+function addOnlyNums2(...argumentos) {
+  let suma = 0;
+  for (const argumento of argumentos) {
+    if (typeof argumento == "number") {
+      suma += argumento;
+    }
+  }
+  return suma;
+}
+
+console.log(addOnlyNums2(1, "perro", 2, 4, "2")); //7
+
+//el operador `typeof` siempre devuelve en `string` el tipo de dato
+
+//2
+typeof "number" === "number" // ✅ true
+typeof "number" == "number" // ✅ true
+
+//"2"
+typeof "2" === "string" // ✅ true
+typeof "2" === "number"  // ❌ false
+typeof "2" == "number"  // ❌ false (porque "string" ≠ "number")
+
+
+//No importa que uses `==` o `===`, en este caso el tipo nunca será `"number"` si el valor es un `string` (aunque el string sea "2").
+
+
+
+
+//------------------------------------------
+
+function addOnlyNums3(...args) {
+  let suma = 0;
+  for (const arg of args) {
+    if (!isNaN(arg)) {
+      suma += Number(arg);
+    }
+  }
+  return suma;
+}
+
+console.log(addOnlyNums3(1, "perro", 2, 4, "2")); // → 9
+
+
+//------------------------------------------
+
 // Escribe una función llamada countTheArgs que pueda recibir cualquier número de argumentos y devuelva un número que indique cuántos argumentos ha recibido.
 
 function countTheArgs(...argum) {
   return argum.length;
 }
-console.log(countTheArgs("gato", "perro")); //2
-console.log(countTheArgs("gato", "perro", "pollo", "oso")); //4
+// console.log(countTheArgs("gato", "perro")); //2
+// console.log(countTheArgs("gato", "perro", "pollo", "oso")); //4
 
 // Escribe una función llamada combineTwoArrays que reciba dos array cómo argumentos y devuelva solo un array que combine los dos (usando spread operator).
 
@@ -126,11 +172,11 @@ function combineTwoArrays(array1, array2) {
   return [...array1, ...array2];
 }
 
-console.log(combineTwoArrays([1, 2, 4], ["manzana", 7, 9]));
+// console.log(combineTwoArrays([1, 2, 4], ["manzana", 7, 9]));
 
+/*
 //EXTRAS
 
-console.log(b);
 // Dado el siguiente objeto:
 const HIGH_TEMPERATURES = {
   yesterday: 30,
@@ -176,3 +222,24 @@ const sumAndSquare = (...data) => {
 };
 
 console.log(sumAndSquare(2, 2, 3));
+*/
+
+const num = 2;
+const numString = "2";
+
+//typeof devuelve el tipo de dato como string. Por ejemplo: "number" y no evalúa, solo nos devuelve esta información. 
+// == evalúa solo el valor
+if (typeof num == "number") {  
+  console.log(num + "es un number"); //entra aquí
+} else {
+  console.log("prueba otra vez");
+}
+
+// == evalúa solo el valor no el tipo de dato
+if (typeof numString == "number") {   //
+  console.log(numString + "is a number");
+} else {
+  console.log("prueba otra vez"); // entra aquí
+}
+
+
