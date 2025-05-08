@@ -111,7 +111,7 @@ const pikachu = {
 function addOnlyNums(...argumentos) {
     let suma = 0
     for (const argumento of argumentos) {
-        if (typeof (argumento) === "number") {
+        if (typeof argumento === "number") {
             suma += argumento
         }
     }
@@ -139,5 +139,6 @@ function combineTwoArrays(array1, array2){
 
 console.log(combineTwoArrays([1,2,4], ["manzana", 7, 9]))
 
+//EXTRAS
 
 
